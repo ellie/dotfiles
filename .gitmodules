@@ -1,0 +1,6 @@
+[submodule "dotbot"]
+	path = dotbot
+	url = https://github.com/anishathalye/dotbot
+[submodule "zplug"]
+	path = zplug
+	url = https://github.com/zplug/zplug
