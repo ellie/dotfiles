@@ -1,7 +1,7 @@
 # Plugins ----------------------------------------------------------------------
 source ~/dotfiles/zplug/init.zsh
 
-zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
+eval "$(starship init zsh)"
 
 zplug "plugins/git",   from:oh-my-zsh
 zplug "zsh-users/zsh-syntax-highlighting"
@@ -93,4 +93,12 @@ export GTK_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus
 export GO111MODULE=on
-export PATH="$PATH:$HOME/Library/Python/3.7/bin"
+export PATH="$(pyenv root)/shims:$HOME/Library/Python/3.7/bin:$PATH"
+export PATH="$HOME/.fastlane/bin:$PATH"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+source $HOME/.cargo/env
+source $HOME/.poetry/env

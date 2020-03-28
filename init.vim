@@ -1,30 +1,12 @@
 " Setup plugins ----------------------------------------------------------------
-
 call plug#begin('~/.config/neovim/plugged')
 
-Plug 'roxma/nvim-yarp'
-
-" autocomplete 
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-
-" colour scheme
-Plug 'altercation/vim-colors-solarized'
-
 Plug 'junegunn/fzf'
-
 Plug 'itchyny/lightline.vim'
-
-" git
 Plug 'airblade/vim-gitgutter' " displays diff stuff in the sign column
-
-" just support as many languages as possible
 Plug 'sheerun/vim-polyglot'
-
 Plug 'iCyMind/NeoSolarized'
-
-Plug 'zchee/deoplete-go', {'build': {'unix': 'make'}}
-
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
 
@@ -35,7 +17,6 @@ set tabstop=4
 set shiftwidth=4
 
 " Appearance -------------------------------------------------------------------
-
 set colorcolumn=80     " I prefer not to go beyond this
 set ruler              " show current line and column in status
 colorscheme NeoSolarized
@@ -56,6 +37,9 @@ let g:lightline = {
       \ 'separator': { 'left': '', 'right': '' },
       \ 'subseparator': { 'left': '', 'right': '' }
       \ }
+
+" get that floaty window :D
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 
 " Key bindings -----------------------------------------------------------------
 inoremap jj <Esc>
@@ -89,14 +73,6 @@ nnoremap J :wincmd j<cr>
 nnoremap K :wincmd k<cr>
 nnoremap L :wincmd l<cr>
 
-au FileType go nmap <leader>b <Plug>(go-build)
-au FileType go nmap <leader>i <Plug>(go-install)
-
-au FileType rust nmap gd <Plug>(rust-def)
-au FileType rust nmap gs <Plug>(rust-def-split)
-au FileType rust nmap gx <Plug>(rust-def-vertical)
-au FileType rust nmap <leader>gd <Plug>(rust-doc)
-
 " --column: Show column number
 " --line-number: Show line number
 " --no-heading: Do not show file headings in results
@@ -111,14 +87,53 @@ command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-h
 
 tnoremap <esc> <C-\><C-n>
 
-" Autocmds ---------------------------------------------------------------------
-autocmd FileType vue.html.javascript.css let b:deoplete_disable_auto_complete = 1
-
 " Autocomplete -----------------------------------------------------------------
-set hidden
-set completeopt=noinsert,menuone,noselect
+"
+" see: https://github.com/neoclide/coc.nvim
+"
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=300
 
-let g:deoplete#enable_at_startup = 1
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use <leader>k to show documentation in preview window.
+nnoremap <silent> <leader>k :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " Buffers ----------------------------------------------------------------------
 set hidden " open a new buffer without being forced to save
