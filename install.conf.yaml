@@ -6,6 +6,9 @@
 
 - link:
     ~/.zshrc: zshrc
+    ~/.config/starship.toml: 
+      path: starship.toml
+      create: true
     ~/.config/nvim/init.vim: 
       path: init.vim
       create: true
