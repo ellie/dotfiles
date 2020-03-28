@@ -13,6 +13,11 @@
       path: init.vim
       create: true
 
+- cargo:
+  - ripgrep
+  - lsd
+  - bat
+
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
 

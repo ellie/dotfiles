@@ -4,3 +4,6 @@
 [submodule "zplug"]
 	path = zplug
 	url = https://github.com/zplug/zplug
+[submodule "dotbot-rust"]
+	path = dotbot-rust
+	url = https://github.com/alexcormier/dotbot-rust
