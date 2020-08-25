@@ -3,6 +3,7 @@ set $mod Mod4
 
 font pango:Hack Nerd Font Regular
 
+exec_always --no-startup-id compton -b
 exec --no-startup-id feh --bg-fill ~/wallpaper.jpg
 exec --no-startup-id nm-applet
 

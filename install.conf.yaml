@@ -18,6 +18,9 @@
     ~/.config/polybar: 
       path: polybar
       create: true
+    ~/.config/compton.conf: 
+      path: compton.conf
+      create: true
 
 - shell:
   - 
