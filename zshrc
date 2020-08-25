@@ -63,7 +63,6 @@ alias v="nvim"
 alias m="make"
 alias d="docker"
 alias emacs="TERM=xterm-24bits emacs -nw"
-alias telescope="mosh $(doctl compute droplet list --output json | jq -r '.[] | select(.name|test("telescope")) | .networks.v4 | .[].ip_address')"
 alias ls="lsd"
 alias cat="bat"
 
@@ -84,8 +83,6 @@ export ZSH_HISTORY_KEYBIND_SCREEN="^r^r"
 export ZSH_HISTORY_KEYBIND_ARROW_UP="^p"
 export ZSH_HISTORY_KEYBIND_ARROW_DOWN="^n"
 
-source $HOME/dotfiles/zsh/zsh-history/init.zsh
-
 # Added by Krypton
 export GPG_TTY=$(tty)
 export TERM=xterm-256color
@@ -93,7 +90,7 @@ export GTK_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus
 export GO111MODULE=on
-export PATH="$(pyenv root)/shims:$HOME/Library/Python/3.7/bin:$PATH"
+export PATH="$HOME/Library/Python/3.7/bin:$PATH"
 export PATH="$HOME/.fastlane/bin:$PATH"
 
 export NVM_DIR="$HOME/.nvm"
@@ -101,4 +98,3 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 source $HOME/.cargo/env
-source $HOME/.poetry/env

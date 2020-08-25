@@ -12,20 +12,18 @@
     ~/.config/nvim/init.vim: 
       path: init.vim
       create: true
-
-- cargo:
-  - ripgrep
-  - lsd
-  - bat
+    ~/.config/i3/config: 
+      path: i3
+      create: true
 
 - shell:
-  - [git submodule update --init --recursive, Installing submodules]
-
   - 
     command: "curl -fsSL https://starship.rs/install.sh | bash"
     stdin: true
     stdout: true
     stderr: true
+
+  - [cargo install lsd bat ripgrep]
 
   - ["curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim", Installing Vim Plug]
   - [pip3 install --user neovim, Installing NeoVim python library]
