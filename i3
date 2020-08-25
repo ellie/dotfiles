@@ -3,6 +3,7 @@ set $mod Mod4
 
 font pango:Hack Nerd Font Regular
 
+exec --no-startup-id feh --bg-fill ~/wallpaper.jpg
 exec --no-startup-id nm-applet
 
 exec_always --no-startup-id ~/.config/polybar/launch.sh &
