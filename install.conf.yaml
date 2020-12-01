@@ -21,6 +21,9 @@
     ~/.config/compton.conf: 
       path: compton.conf
       create: true
+    ~/.tmux.conf: 
+      path: tmux.conf
+      create: true
 
 - shell:
   - 
@@ -36,3 +39,6 @@
   - [nvim +'UpdateRemotePlugins --sync' +qa, Updating NeoVim remote plugins]
   - [nvim +'PlugInstall --sync' +qa, Installing NeoVim plugins]
   - [nvim +'CocInstall coc-python coc-pyright coc-css' +qa, Installing CoC plugins]
+  - [mkdir -p ~/.tmux/plugins, Setting up TPM dir]
+  - ["git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm", installing TPM]
+  - [tmux source ~/.tmux.conf, Reloading tmux]

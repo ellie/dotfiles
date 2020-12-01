@@ -92,6 +92,7 @@ export QT_IM_MODULE=ibus
 export GO111MODULE=on
 export PATH="$HOME/Library/Python/3.7/bin:$PATH"
 export PATH="$HOME/.fastlane/bin:$PATH"
+export PATH="$(yarn global bin):$PATH"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

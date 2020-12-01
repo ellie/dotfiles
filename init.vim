@@ -7,6 +7,7 @@ Plug 'airblade/vim-gitgutter' " displays diff stuff in the sign column
 Plug 'sheerun/vim-polyglot'
 Plug 'iCyMind/NeoSolarized'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'preservim/nerdtree'
 
 call plug#end()
 
@@ -85,6 +86,8 @@ nnoremap L :wincmd l<cr>
 " --color: Search color options
 command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
 
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
+
 tnoremap <esc> <C-\><C-n>
 
 " Autocomplete -----------------------------------------------------------------
@@ -121,6 +124,8 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+
+autocmd BufWritePre *.go :call CocAction('organizeImport')
 
 " Use <leader>k to show documentation in preview window.
 nnoremap <silent> <leader>k :call <SID>show_documentation()<CR>

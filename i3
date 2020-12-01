@@ -4,8 +4,10 @@ set $mod Mod4
 font pango:Hack Nerd Font Regular
 
 exec_always --no-startup-id compton -b
-exec --no-startup-id feh --bg-fill ~/wallpaper.jpg
 exec --no-startup-id nm-applet
+
+exec --no-startup-id feh --bg-fill ~/wallpaper.jpg
+exec --no-startup-id xfce4-power-manager
 
 exec_always --no-startup-id ~/.config/polybar/launch.sh &
 
@@ -20,7 +22,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
