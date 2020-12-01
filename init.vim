@@ -42,6 +42,9 @@ let g:lightline = {
 " get that floaty window :D
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 
+highlight Normal ctermbg=none
+highlight NonText ctermbg=none
+
 " Key bindings -----------------------------------------------------------------
 inoremap jj <Esc>
 let mapleader=' '

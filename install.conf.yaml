@@ -21,7 +21,10 @@
     ~/.config/compton.conf: 
       path: compton.conf
       create: true
-    ~/.tmux.conf: 
+    ~/.config/alacritty.yml: 
+      path: alacritty.yml
+      create: true
+    ~/.tmux.conf:
       path: tmux.conf
       create: true
 
