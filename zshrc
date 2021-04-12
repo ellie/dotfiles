@@ -6,7 +6,6 @@ eval "$(starship init zsh)"
 zplug "plugins/git",   from:oh-my-zsh
 zplug "zsh-users/zsh-syntax-highlighting"
 zplug "zsh-users/zsh-autosuggestions"
-zplug "zsh-users/zsh-history-substring-search"
 zplug "b4b4r07/enhancd", use:init.sh
 
 zplug "stedolan/jq", \
@@ -22,14 +21,6 @@ if ! zplug check --verbose; then
 fi
 
 zplug load --verbose
-
-# Key bindings -----------------------------------------------------------------
-bindkey -v
-
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
-bindkey -M vicmd 'k' history-substring-search-up
-bindkey -M vicmd 'j' history-substring-search-down
 
 # History ----------------------------------------------------------------------
 
@@ -99,3 +90,5 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 source $HOME/.cargo/env
+
+eval "$(atuin init)"
