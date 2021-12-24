@@ -9,8 +9,11 @@
     ~/.config/starship.toml: 
       path: starship.toml
       create: true
-    ~/.config/nvim/init.vim: 
-      path: init.vim
+    ~/.config/nvim/init.lua: 
+      path: ./neovim/init.lua
+      create: true
+    ~/.config/nvim/lua: 
+      path: ./neovim/lua
       create: true
     ~/.config/i3/config: 
       path: i3
@@ -24,9 +27,6 @@
     ~/.config/alacritty.yml: 
       path: alacritty.yml
       create: true
-    ~/.tmux.conf:
-      path: tmux.conf
-      create: true
 
 - shell:
   - 
@@ -37,11 +37,4 @@
 
   - [cargo install lsd bat ripgrep]
 
-  - ["curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim", Installing Vim Plug]
   - [pip3 install --user neovim, Installing NeoVim python library]
-  - [nvim +'UpdateRemotePlugins --sync' +qa, Updating NeoVim remote plugins]
-  - [nvim +'PlugInstall --sync' +qa, Installing NeoVim plugins]
-  - [nvim +'CocInstall coc-python coc-pyright coc-css' +qa, Installing CoC plugins]
-  - [mkdir -p ~/.tmux/plugins, Setting up TPM dir]
-  - ["git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm", installing TPM]
-  - [tmux source ~/.tmux.conf, Reloading tmux]

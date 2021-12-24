@@ -1,3 +1,6 @@
+export ZPLUG_HOME=/opt/homebrew/opt/zplug
+source $ZPLUG_HOME/init.zsh
+
 # Plugins ----------------------------------------------------------------------
 source ~/dotfiles/zplug/init.zsh
 
@@ -91,4 +94,6 @@ export NVM_DIR="$HOME/.nvm"
 
 source $HOME/.cargo/env
 
-eval "$(atuin init)"
+eval "$(atuin init zsh)"
+export PATH="/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/2.7.0/bin:$PATH"
+export PATH="$HOME/.rbenv/shims:$PATH"

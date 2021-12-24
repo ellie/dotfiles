@@ -1,5 +1,5 @@
 [character]
-symbol = "🦄"
+success_symbol = "🦄"
 
 [username]
 show_always = true
